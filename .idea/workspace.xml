@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7ec8b421-322b-4c91-8212-86252dbcaea7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/testingSparkScala/Exercise1.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/testingSparkScala/Exercise1.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/testingSparkScala/Exercise1$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/testingSparkScala/Exercise1$.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -141,7 +139,7 @@
       <workItem from="1572029269192" duration="9731000" />
       <workItem from="1572039868508" duration="5638000" />
       <workItem from="1572086958506" duration="7157000" />
-      <workItem from="1572104027197" duration="3329000" />
+      <workItem from="1572104027197" duration="5787000" />
     </task>
     <servers />
   </component>
