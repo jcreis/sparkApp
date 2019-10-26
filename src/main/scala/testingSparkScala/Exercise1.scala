@@ -4,6 +4,11 @@ import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.types.{DoubleType, StringType, StructField, StructType}
 
 object Exercise1 {
+
+  //Todo: (1) From googleplaystore_user_reviews.csv create a Dataframe (df_1) with the following structure:
+  //                App (String)
+  //                AvgSentimentPolarity (Double) DefValue=0.0        Note: Grouped by App name
+
   def main(args: Array[String]) {
 
     val numRowsToDisplay = 10000
@@ -28,8 +33,9 @@ object Exercise1 {
       .option("mode", "DROPMALFORMED")
       .schema(initialSchema)
       .csv("src/main/resources/googleplaystore_user_reviews.csv")
-      .toDF("App","Translated_Review", "Sentiment", "Sentiment_Polarity", "Sentiment_Subjectivity")
+      //.toDF("App","Translated_Review", "Sentiment", "Sentiment_Polarity", "Sentiment_Subjectivity")
 
+    //main_dataframe.show()
     //GroupBy does the avg of double values on its own
     val test_df = main_dataframe.orderBy("App").groupBy("App").mean()
 
