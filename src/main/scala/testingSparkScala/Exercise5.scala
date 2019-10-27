@@ -2,7 +2,7 @@ package testingSparkScala
 
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.functions._
-import org.apache.spark.sql.types.{DateType, DoubleType, LongType, StringType, StructField, StructType}
+import org.apache.spark.sql.types._
 
 object Exercise5 {
   def main(args: Array[String]) {
@@ -84,8 +84,8 @@ object Exercise5 {
     val df_genre_polarity_rating = df_app_genre_polarity
       .join(df_app_rating, df_app_genre_polarity.col("App") === df_app_rating.col("App"))
       .drop("App").groupBy("Genres").count()
-        .withColumnRenamed("Genres", "Genre")
-        .withColumnRenamed("count", "Count")
+      .withColumnRenamed("Genres", "Genre")
+      .withColumnRenamed("count", "Count")
 
 
     /*val a = df_ex4
@@ -104,11 +104,16 @@ object Exercise5 {
       .mode("overwrite")
       .parquet("src/main/output/googleplaystore_metrics")
 
-    df_app_rating.show(1)
+    println()
+    println("Exercício 5:")
+    println()
+
+    println("Table with Average_Rating (couldn't join with df_4 without conflicts)")
+    df_app_rating.show(10)
+
+
+    println("df_4")
     df_genre_polarity_rating.show(numRowsToDisplay)
-
-
-    println("Finished the display of " + numRowsToDisplay + " rows.")
 
     spark.stop()
   }

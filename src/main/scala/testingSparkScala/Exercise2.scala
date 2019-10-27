@@ -28,26 +28,25 @@ object Exercise2 {
       .option("header","true")
       .option("mode", "DROPMALFORMED")
       .csv("src/main/resources/googleplaystore.csv")
-    //main_dataframe.show()
 
     val bestApps = main_dataframe.filter($"Rating" >= 4.0).orderBy(desc("Rating"))
     val bestAppsWithoutNaNs = bestApps.where(!isnan($"Rating"))
 
-    /*bestAppsWithoutNaNs//.select("App", "Rating")
-      .coalesce(1)
-      .write
-      .csv("src/main/output/best_apps.csv")*/
 
     bestAppsWithoutNaNs.coalesce(1)
-        .write
-        .format("com.databricks.spark.csv")
-        .mode("overwrite")
-        .option("header", true)
-        .option("delimiter", "§")
-        .save("src/main/output/best_apps.csv")
+      .write
+      .format("com.databricks.spark.csv")
+      .mode("overwrite")
+      .option("header", true)
+      .option("delimiter", "§")
+      .save("src/main/output/best_apps.csv")
 
-    bestAppsWithoutNaNs.show(1000)
-    println("Finished the display of " + numRowsToDisplay + " rows.")
+    println()
+    println("Exercício 2:")
+    println()
+
+    bestAppsWithoutNaNs.show(numRowsToDisplay)
+
 
 
     spark.stop()

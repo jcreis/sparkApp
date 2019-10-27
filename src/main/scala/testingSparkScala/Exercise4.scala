@@ -2,7 +2,7 @@ package testingSparkScala
 
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.functions.{col, collect_set, regexp_extract, split}
-import org.apache.spark.sql.types.{DateType, DoubleType, LongType, StringType, StructField, StructType}
+import org.apache.spark.sql.types._
 
 object Exercise4 {
   def main(args: Array[String]) {
@@ -38,7 +38,6 @@ object Exercise4 {
 
     val df_1 = test_df.select("App", "avg(Sentiment_Polarity)")
       .withColumnRenamed("avg(Sentiment_Polarity)", "Average_Sentiment_Polarity")
-    //df_1.show(numRowsToDisplay)
 
     //----------------- Exercise 3 -----------------
 
@@ -62,7 +61,7 @@ object Exercise4 {
     val initial_dataframe = spark.read
       .option("header","true")
       .option("mode", "DROPMALFORMED")
-      .option("dateFormat", "MMMMdd,yyyy") // sets date to dateFormat
+      .option("dateFormat", "MMMMdd,yyyy")
       .schema(ex3Schema)
       .csv("src/main/resources/googleplaystore.csv")
 
@@ -79,23 +78,25 @@ object Exercise4 {
       .withColumn("Genres", split(col("Genres"), ";"))
       .withColumn("Size", regexp_extract($"Size", "^[0-9.]*",0).cast(DoubleType))
       .withColumn("Price", regexp_extract($"Price", "^[0-9.]*",0).cast(DoubleType))
-    //df_2.show(numRowsToDisplay)
 
     //----------------- Join ex1 & ex3 and save as Parquet file -----------------
 
     val df_ex4 = df_2.join(df_1, df_2.col("App") === df_1.col("App")).drop(df_1.col("App"))
 
+    val columns: Array[String] = df_ex4.columns
+    val reorderedColumns: Array[String] = Array("App", "Categories", "Rating", "Reviews", "Size", "Installs",
+      "Type", "Price", "Content_Rating", "Genres", "Last_Updated", "Current_Version", "Minimum_Android_Version")
+    val df_4_final = df_ex4.select(reorderedColumns.head, reorderedColumns.tail: _*)
 
-    df_ex4.write
+    df_4_final.write
       .mode("overwrite")
       .parquet("src/main/output/googleplaystore_cleaned")
 
-    //val df_test = spark.read.parquet("src/main/output/googleplaystore_cleaned").show()
+    println()
+    println("Exercício 4: df_3")
+    println()
 
-
-    df_ex4.show(numRowsToDisplay)
-    println("Finished the display of " + numRowsToDisplay + " rows.")
-
+    df_4_final.show(numRowsToDisplay)
     spark.stop()
   }
 }

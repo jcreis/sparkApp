@@ -35,21 +35,19 @@ object Exercise1 {
       .csv("src/main/resources/googleplaystore_user_reviews.csv")
 
 
-    //main_dataframe.show()
+
     //GroupBy does the avg of double values on its own
     val test_df = main_dataframe.orderBy("App").groupBy("App").mean()
 
 
     println()
-    println("Exercicio 1: df_1")
+    println("Exercício 1: df_1")
     println()
 
     val df_1 = test_df.select("App", "avg(Sentiment_Polarity)")
-    .withColumnRenamed("avg(Sentiment_Polarity)", "Average_Sentiment_Polarity")
+      .withColumnRenamed("avg(Sentiment_Polarity)", "Average_Sentiment_Polarity")
 
     df_1.show(numRowsToDisplay)
-
-    println("Finished the display of " + numRowsToDisplay + " rows.")
 
 
     spark.stop()

@@ -2,7 +2,7 @@ package testingSparkScala
 
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.functions._
-import org.apache.spark.sql.types.{ArrayType, DateType, DoubleType, LongType, StringType, StructField, StructType}
+import org.apache.spark.sql.types._
 
 
 object Exercise3 {
@@ -17,8 +17,6 @@ object Exercise3 {
   //       In case of App duplicates (for all columns except categories), the remaining columns should have
   //       the same values as the ones on the row with the maximum number of reviews (compare example 1 with 3).
 
-  // App, Categories, Rating, Reviews, Size, Installs, Type, Price, Content_Rating, Genres, Last_Updated, Current_Version,
-  // Minimum_Android_Version
 
   def main(args: Array[String]): Unit = {
 
@@ -30,7 +28,6 @@ object Exercise3 {
       .getOrCreate()
     spark.sparkContext.setLogLevel("WARN")
 
-    // Need for filter columns
     import spark.implicits._
 
     val initialSchema = StructType(Array(
@@ -71,8 +68,16 @@ object Exercise3 {
       .withColumn("Size", regexp_extract($"Size", "^[0-9.]*",0).cast(DoubleType))
       .withColumn("Price", regexp_extract($"Price", "^[0-9.]*",0).cast(DoubleType))
 
-    df_2.show(100)
-    println("Finished the display of " + numRowsToDisplay + " rows.")
+    val columns: Array[String] = df_2.columns
+    val reorderedColumns: Array[String] = Array("App", "Categories", "Rating", "Reviews", "Size", "Installs",
+      "Type", "Price", "Content_Rating", "Genres", "Last_Updated", "Current_Version", "Minimum_Android_Version")
+    val df_2_final = df_2.select(reorderedColumns.head, reorderedColumns.tail: _*)
+
+    println()
+    println("Exercício 3: df_2")
+    println()
+
+    df_2_final.show(numRowsToDisplay)
 
 
     spark.stop()
