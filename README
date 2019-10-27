@@ -1,0 +1,24 @@
+The project was developed using Scala 2.12 and Spark (Core and SQL) 2.4.4, with the Maven Dependency Manager.
+
+After unzip the project, open either IntelliJ IDEA or Eclipse and import the project folder as a Maven Project 
+(correct version of dependencies should appear in pom.xml file). Then, click build project, then you can run each exercise.
+(specify the correct Module if needed)
+
+The project is devided into 5 programs, each representing one of the five exercises. To run one exercise, either:
+(1) open the exercise file you wish to run, right click anywhere in the .scala file page, and click "Run Exercise N"
+    or 
+(2) right-click in the project tree, on the file you wish to run, and click "Run".
+
+The output files appear in the /output folder.
+
+
+Notes:
+- Could not figure out a way to set default values in tuples that have null values, when requires (ex: appear in the
+table 0.0 instead of null/NaN)
+- Saving the dataframe into a .csv/parquet file created a folder for it automatically, where the folder always gets the name of the supposed
+file, and the file has a auto-generated name. Could only change it to the intended name manually, not automatically. Although, it's possible
+to load the file by giving as input the path of the folder (ex: /src/main/output/googleplaystore_cleaned will load the parquet file inside
+the folder.
+- Price's column in df_2 does not show the values in €, since couldn't get the information about the '$' through regex.
+- In Exercise 5, could only get the values separated. Could not join the values of Average_Rating and Average_Polarity previously
+fetched with the Genre and respective Count.
