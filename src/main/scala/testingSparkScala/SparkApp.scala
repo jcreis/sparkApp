@@ -3,7 +3,7 @@ package testingSparkScala
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.types.{BooleanType, DoubleType, StringType, StructField, StructType}
 
-
+// Example class
 object SparkApp {
 
     def main(args: Array[String]) {

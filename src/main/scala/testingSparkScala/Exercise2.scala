@@ -1,7 +1,6 @@
 package testingSparkScala
 
 import org.apache.spark.sql.SparkSession
-import org.apache.spark.sql.types.{DoubleType, LongType, StringType, StructField, StructType}
 import org.apache.spark.sql.functions._
 
 object Exercise2 {

@@ -1,7 +1,9 @@
 package testingSparkScala
 
 import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.functions._
 import org.apache.spark.sql.types.{ArrayType, DateType, DoubleType, LongType, StringType, StructField, StructType}
+
 
 object Exercise3 {
 
@@ -29,7 +31,23 @@ object Exercise3 {
     // Need for filter columns
     import spark.implicits._
 
-    val customSchema = StructType(Array(
+    val initialSchema = StructType(Array(
+      StructField("App", StringType),
+      StructField("Category", StringType),
+      StructField("Rating", DoubleType),
+      StructField("Reviews", LongType),
+      StructField("Size", StringType),
+      StructField("Installs", StringType),
+      StructField("Type", StringType),
+      StructField("Price", StringType),
+      StructField("Content Rating", StringType),
+      StructField("Genres", StringType),
+      StructField("Last Updated", DateType),
+      StructField("Current Ver", StringType),
+      StructField("Android Ver", StringType),
+    ))
+
+    /*val finalSchema = StructType(Array(
       StructField("App", StringType),
       StructField("Categories", ArrayType(StringType)),
       StructField("Rating", DoubleType),
@@ -43,16 +61,43 @@ object Exercise3 {
       StructField("Last_Updated", DateType),
       StructField("Current_Version", StringType),
       StructField("Minimum_Android_Version", StringType),
+    ))*/
 
-
-    ))
-
-    val main_dataframe = spark.read
+    val initial_dataframe = spark.read
       .option("header","true")
       .option("mode", "DROPMALFORMED")
+      .option("dateFormat", "MMMMdd,yyyy") // sets date to dateFormat
+      .schema(initialSchema)
       .csv("src/main/resources/googleplaystore.csv")
 
+    //initial_dataframe.printSchema()
+    //initial_dataframe.show()
 
+    val df_1 = initial_dataframe.dropDuplicates("App")
+      .groupBy("App")
+      .agg(collect_set("Category") as "Categories")
+    //df_1.show()            initial_dataframe("App") === df_1("App")
+
+    val combined_init_1 = initial_dataframe.join(df_1, "App").drop("Category")
+      .withColumnRenamed("Content Rating", "Content_Rating")
+      .withColumnRenamed("Last Updated", "Last_Updated")
+      .withColumnRenamed("Current Ver", "Current_Version")
+      .withColumnRenamed("Android Ver", "Minimum_Android_Version")
+      .withColumn("Genres", split(col("Genres"), ";"))
+      .withColumn("Size", regexp_extract($"Size", "^[0-9.]*",0).cast(DoubleType))
+      .withColumn("Price", regexp_extract($"Price", "^[0-9.]*",0).cast(DoubleType))
+
+
+
+   // val combined_with_price = combined_init_1.withColumn("Price", regexp_extract($"Price", "^[0-9.]*",0).cast(DoubleType))
+
+    //val a = initial_dataframe.join(combined_init_1, $"Size".cast(DoubleType))
+
+    combined_init_1.printSchema()
+    combined_init_1.show()
+
+
+    spark.stop()
   }
 
 }
