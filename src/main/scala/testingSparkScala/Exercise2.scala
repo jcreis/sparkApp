@@ -11,6 +11,8 @@ object Exercise2 {
 
   def main(args: Array[String]): Unit = {
 
+    val numRowsToDisplay = 100
+
     val spark = SparkSession.builder()
       .master("local[*]")
       .appName("Spark Application")
@@ -30,7 +32,6 @@ object Exercise2 {
 
     val bestApps = main_dataframe.filter($"Rating" >= 4.0).orderBy(desc("Rating"))
     val bestAppsWithoutNaNs = bestApps.where(!isnan($"Rating"))
-    bestAppsWithoutNaNs.show(1000)
 
     /*bestAppsWithoutNaNs//.select("App", "Rating")
       .coalesce(1)
@@ -44,6 +45,10 @@ object Exercise2 {
         .option("header", true)
         .option("delimiter", "§")
         .save("src/main/output/best_apps.csv")
+
+    bestAppsWithoutNaNs.show(1000)
+    println("Finished the display of " + numRowsToDisplay + " rows.")
+
 
     spark.stop()
   }

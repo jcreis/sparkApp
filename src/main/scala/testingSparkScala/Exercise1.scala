@@ -11,7 +11,7 @@ object Exercise1 {
 
   def main(args: Array[String]) {
 
-    val numRowsToDisplay = 10000
+    val numRowsToDisplay = 100
 
     val spark = SparkSession.builder
       .master("local[*]")
@@ -33,17 +33,21 @@ object Exercise1 {
       .option("mode", "DROPMALFORMED")
       .schema(initialSchema)
       .csv("src/main/resources/googleplaystore_user_reviews.csv")
-      //.toDF("App","Translated_Review", "Sentiment", "Sentiment_Polarity", "Sentiment_Subjectivity")
+
 
     //main_dataframe.show()
     //GroupBy does the avg of double values on its own
     val test_df = main_dataframe.orderBy("App").groupBy("App").mean()
 
+
     println()
     println("Exercicio 1: df_1")
     println()
 
-    val df_1 = test_df.select("App", "avg(Sentiment_Polarity)").show(numRowsToDisplay)
+    val df_1 = test_df.select("App", "avg(Sentiment_Polarity)")
+    .withColumnRenamed("avg(Sentiment_Polarity)", "Average_Sentiment_Polarity")
+
+    df_1.show(numRowsToDisplay)
 
     println("Finished the display of " + numRowsToDisplay + " rows.")
 
