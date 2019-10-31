@@ -1,24 +1,43 @@
+## _Spark Project_
+
+Small Spark Project to understand better how to work with big data properly, and get some value from the information coming from big
+datasets. Understanding also the importance of MapReduce techniques in this kind of systems, and their utility.
+
+Objectives:
+1- Read from googleplaystore_user_reviews.csv and create a structure with only the columns
+
+>   |App|Average_Polarity|  where -> App (String)
+                                  -> Average_Polarity (Double) is the average value of "Sentiment_Polarity" columns for each App
+
+2- Read from googleplaystore.csv and obtain all Apps with a "Rating" greater or equal to 4.0 sorted in descending order.
+   Save that as a CSV file (delimiter: "§") named "best_apps.csv"
+
+3- Read from googleplaystore.csv and create a structure like:
+
+>   |App|Categories|Rating|Reviews|Size|Installs|Type|Price|Content_Rating|Genres|Last_Upd|Curr_Ver|Min_Android_Ver|
+    (String)|(Arr[Str])|(Double)|(Long)|(Double)|(Str)|(Str)|(Double)|(String)|Arr[Str])|(Date)|(String)|(String)|
+
+    Note: Group Categories and Genres by App name into the Array
+
+4- Get the structure from 3) and add it the structure from 1). Save it as a parquet file with snappy compression
+
 The project was developed using Scala 2.12 and Spark (Core and SQL) 2.4.4, with the Maven Dependency Manager.
 
 After unzip the project, open either IntelliJ IDEA or Eclipse and import the project folder as a Maven Project
 (correct version of dependencies should appear in pom.xml file). Then, click build project, then you can run each exercise.
 (specify the correct Module if needed)
 
-The project is devided into 5 programs, each representing one of the five exercises. To run one exercise, either:
-(1) open the exercise file you wish to run, right click anywhere in the .scala file page, and click "Run Exercise N"
-    or
-(2) right-click in the project tree, on the file you wish to run, and click "Run".
+To execute the program: (1) Define the arguments for running the "MainApp" object as the number of the exercise you wanna run.
+(Example) Arguments: 1 -> runs example 1
+          Arguments: 4 -> runs example 4
+          (...)
 
 The output files appear in the /output folder.
 
 
-Notes:
-- Could not figure out a way to set default values in tuples that have null values, when requires (ex: appear in the
-table 0.0 instead of null/NaN)
+ToDo:
+- Set default values in tuples that have null values, when requires (ex: appear in the table 0.0 instead of null/NaN)
 - Saving the dataframe into a .csv/parquet file created a folder for it automatically, where the folder always gets the name of the supposed
-file, and the file has a auto-generated name. Could only change it to the intended name manually, not automatically. Although, it's possible
-to load the file by giving as input the path of the folder (ex: /src/main/output/googleplaystore_cleaned will load the parquet file inside
-the folder.
-- Price's column in df_2 does not show the values in €, since couldn't get the information about the '$' through regex.
-- In Exercise 5, could only get the values separated. Could not join the values of Average_Rating and Average_Polarity previously
-fetched with the Genre and respective Count.
+file, and the file has a auto-generated name. Could only change it to the intended name manually, not automatically.
+- Show Prices in € (make the conversion from $ to €).
+- In Exercise 5, figure a way to group the Genres column and join it with the AvgPolarity + AvgRating columns.
