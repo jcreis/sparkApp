@@ -2,23 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ec8b421-322b-4c91-8212-86252dbcaea7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README" beforeDir="false" afterPath="$PROJECT_DIR$/README" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/output/best_apps.csv/.part-00000-85bcff26-f9ee-4cb3-a01d-c3b127532997-c000.csv.crc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/output/best_apps.csv/part-00000-85bcff26-f9ee-4cb3-a01d-c3b127532997-c000.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/output/googleplaystore_cleaned/.part-00000-03cd5ddc-b0a9-4bb0-acd9-da93a5cef30b-c000.snappy.parquet.crc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/output/googleplaystore_cleaned/part-00000-03cd5ddc-b0a9-4bb0-acd9-da93a5cef30b-c000.snappy.parquet" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/output/googleplaystore_metrics/.part-00000-751622f0-2172-45e3-969e-7b2b9cee41ad-c000.snappy.parquet.crc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/output/googleplaystore_metrics/part-00000-751622f0-2172-45e3-969e-7b2b9cee41ad-c000.snappy.parquet" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/testingSparkScala/Exercise1.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/testingSparkScala/Exercise2.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/testingSparkScala/Exercise3.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/testingSparkScala/Exercise4.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/testingSparkScala/MainApp.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/testingSparkScala/Exercise5.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/testingSpark.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/testingSparkScala/Exercise1$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/testingSparkScala/Exercise1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/testingSparkScala/Exercise4$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/testingSparkScala/Exercise4$.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -181,7 +165,7 @@
       <workItem from="1572104027197" duration="13894000" />
       <workItem from="1572183504496" duration="9786000" />
       <workItem from="1572193808759" duration="15828000" />
-      <workItem from="1572529565093" duration="2068000" />
+      <workItem from="1572529565093" duration="2213000" />
     </task>
     <servers />
   </component>

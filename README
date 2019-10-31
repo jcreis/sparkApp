@@ -1,5 +1,6 @@
 ## _Spark Project_
 
+
 Small Spark Project to understand better how to work with big data properly, and get some value from the information coming from big
 datasets. Understanding also the importance of MapReduce techniques in this kind of systems, and their utility.
 
@@ -18,6 +19,7 @@ Objectives:
     (String)|(Arr[Str])|(Double)|(Long)|(Double)|(Str)|(Str)|(Double)|(String)|Arr[Str])|(Date)|(String)|(String)|
 
     Note: Group Categories and Genres by App name into the Array
+
 
 4- Get the structure from 3) and add it the structure from 1). Save it as a parquet file with snappy compression
 
@@ -39,5 +41,6 @@ ToDo:
 - Set default values in tuples that have null values, when requires (ex: appear in the table 0.0 instead of null/NaN)
 - Saving the dataframe into a .csv/parquet file created a folder for it automatically, where the folder always gets the name of the supposed
 file, and the file has a auto-generated name. Could only change it to the intended name manually, not automatically.
+
 - Show Prices in € (make the conversion from $ to €).
 - In Exercise 5, figure a way to group the Genres column and join it with the AvgPolarity + AvgRating columns.
