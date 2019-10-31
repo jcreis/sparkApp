@@ -1,3 +1,7 @@
+Small Spark Project to understand better how to work with big data properly, and get some value from the information coming from big 
+datasets. Understanding also the importance of MapReduce techniques in this kind of systems, and their utility.
+
+
 The project was developed using Scala 2.12 and Spark (Core and SQL) 2.4.4, with the Maven Dependency Manager.
 
 After unzip the project, open either IntelliJ IDEA or Eclipse and import the project folder as a Maven Project
