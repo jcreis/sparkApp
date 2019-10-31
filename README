@@ -27,10 +27,10 @@ After unzip the project, open either IntelliJ IDEA or Eclipse and import the pro
 (correct version of dependencies should appear in pom.xml file). Then, click build project, then you can run each exercise.
 (specify the correct Module if needed)
 
-The project is devided into 5 programs, each representing one of the five exercises. To run one exercise, either:
-(1) open the exercise file you wish to run, right click anywhere in the .scala file page, and click "Run Exercise N"
-    or
-(2) right-click in the project tree, on the file you wish to run, and click "Run".
+To execute the program: (1) Define the arguments for running the "MainApp" object as the number of the exercise you wanna run.
+(Example) Arguments: 1 -> runs example 1
+          Arguments: 4 -> runs example 4
+          (...)
 
 The output files appear in the /output folder.
 
