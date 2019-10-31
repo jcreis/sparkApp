@@ -1,18 +1,20 @@
+## _Spark Project_
+
 Small Spark Project to understand better how to work with big data properly, and get some value from the information coming from big 
 datasets. Understanding also the importance of MapReduce techniques in this kind of systems, and their utility.
 
 Objectives:
 1- Read from googleplaystore_user_reviews.csv and create a structure with only the columns 
         
-        |App|Average_Polarity|  where -> App (String) && 
-                                      -> Average_Polarity (Double) is the average value of "Sentiment_Polarity" columns for each App
+>   |App|Average_Polarity|  where -> App (String)
+                                  -> Average_Polarity (Double) is the average value of "Sentiment_Polarity" columns for each App
 
 2- Read from googleplaystore.csv and obtain all Apps with a "Rating" greater or equal to 4.0 sorted in descending order.
    Save that as a CSV file (delimiter: "§") named "best_apps.csv"
 
 3- Read from googleplaystore.csv and create a structure like:
 
-        |App|Categories|Rating|Reviews|Size|Installs|Type|Price|Content_Rating|Genres|Last_Upd|Curr_Ver|Min_Android_Ver|
+>   |App|Categories|Rating|Reviews|Size|Installs|Type|Price|Content_Rating|Genres|Last_Upd|Curr_Ver|Min_Android_Ver|
     (String)|(Arr[Str])|(Double)|(Long)|(Double)|(Str)|(Str)|(Double)|(String)|Arr[Str])|(Date)|(String)|(String)|
     
     Note: Group Categories and Genres by App name into the Array
